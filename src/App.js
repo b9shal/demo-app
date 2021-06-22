@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react"
+import { RowCol } from "./components/rowCol/RowCol"
+import { Table } from "./components/table/Table"
+import { TableControl } from "./components/tableControl/TableControl"
+import { rowColContext } from "./Context"
+
 
 function App() {
+  const [row, setRow] = useState(3)
+  const [col, setCol] = useState(4)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div style={{display:"flex", margin: 50, justifyItems:"center", alignItems:"center", background:"efefef"}}>
+      <rowColContext.Provider value={{row, setRow, col, setCol}}>
+        <RowCol/>
+        <TableControl/>
+        <Table/>
+      </rowColContext.Provider>
     </div>
   );
 }
