@@ -12,10 +12,11 @@ export function Table() {
   }
   for(let i=0; i< col; i++){
     colArr.push(1)
-  } 
+  }
   const cellStyle = {
-    background: "#454567",
-    padding: 100
+    border:"1px solid black", 
+    padding: 15, 
+    cursor: "pointer"
   }
 
   const cellClickHandle = (index) => {
@@ -31,7 +32,7 @@ export function Table() {
             rowArr.map((value, rowIndex) => <tr style={{border:"1px solid black"}}
             key={rowIndex}>{colArr.map((value, colIndex) =>
             <td key={`${rowIndex}${colIndex}`} onClick={() => cellClickHandle(`${rowIndex}${colIndex}`) } 
-            style={{border:"1px solid black", padding: 15, cursor: "pointer"}}
+            style={onCellSelect ? cellStyle : {...cellStyle, background:"#456754"}}
             className={onCellSelect ? {cellStyle} : null }>{value}</td>)}</tr>)
           }
         </tbody>
